@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Default Template</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css" integrity="sha512-dMUQinc1gbNb95AFtKtP4q/g56T8r9oDxlWy0hrHyzfUbMq/vQztAqaR/FDY/bY0R1Ikc30aq94jyQH2Ix++ug==" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js" integrity="sha512-9cXmvmK1gIDw3Tol6Xg/1SUls/CvBMgedu1aDjT519sQzy7jk+LoezyQqlzClW2LgXww4xEyuqtofg7PtWteLQ==" crossorigin="anonymous"></script>
+		<style>
+			html, body {
+				overflow-x: hidden;
+			}
+			body {
+				display: table;
+				width: 100%;
+			}
+			.off-canvas-content {
+				display: flex;
+				min-height: 100vh;
+				flex-direction: column;
+			}
+			main {
+				flex: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="off-canvas-wrapper">
+			<div class="off-canvas position-left" id="off-canvas" data-off-canvas>
+				<!-- Off canvas navigation "left" -->
+			</div>
+			<div id="canvas-content" class="off-canvas-content in-canvas-for-small" data-off-canvas-content>
+				<header class="grid-y">
+					<div class="cell shrink">
+						<div class="grid-container">
+							<p>Header is now automatically shrink to fit contents.</p>
+						</div>
+					</div>
+					<div class="cell auto shrink">
+						<div class="grid-container full">
+
+							<div class="top-bar-container" data-sticky-container >
+								<div class="sticky" data-sticky data-options="anchor: main; marginTop: 0;">
+									<div class="title-bar" data-responsive-toggle="foundation-topbar-items" data-hide-for="medium">
+										<button class="menu-icon" type="button" data-toggle="off-canvas"></button>
+										<div class="title-bar-title">Menu</div>
+									</div>
+									<div class="top-bar grid-container">
+										<div class="top-bar-left " id="foundation-topbar-items"></div>
+										<div class="top-bar-right"></div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</header>
+				<main id="main">
+					<div class="grid-container">
+						<div class="grid-x">{{@content}}</div>
+					</div>
+				</main>
+				<footer id="footer"></footer>
+			</div>
+		</div>
+		<script body>
+			$(function(){
+				$("body").on("swiperight", function(event){
+					$(".menu-icon").click();
+				});
+			});
+			$(document).foundation();
+		</script>
+	</body>
+</html>

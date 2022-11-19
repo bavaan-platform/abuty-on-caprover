@@ -1,0 +1,38 @@
+name: Deploy to Production (main branch)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Package up a deployment tarball
+      - uses: actions/checkout@master
+      - name: Compress action step
+        uses: master-atul/tar-action@v1.0.2
+        id: compress
+        with:
+          command: c
+          cwd: ./
+          files: |
+            ./src
+            ./captain-definition
+            ./Dockerfile
+          outPath: deploy.tar
+
+      # Deploy to Caprover
+      - uses: premoweb/caprover-action@v1
+        with:
+          server: '${{ secrets.CAPROVER_SERVER }}'
+          password: '${{ secrets.CAPROVER_PASSWORD }}'
+          appname: '${{ secrets.APP_NAME }}'
+          branch: 'main'
+

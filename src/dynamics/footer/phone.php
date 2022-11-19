@@ -1,0 +1,2 @@
+<?php if ( !class_exists("Abuty") ) header("Location: /", true, 302); ?>
+<p class="text-center"> &copy; Copyright 1999-<?php echo date("Y"); ?> <a href="/" target="_blank">PremoWeb</a>. All Rights Reserved.</p>
